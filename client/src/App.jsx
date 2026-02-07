@@ -1,18 +1,19 @@
-import { Search } from 'lucide-react'
+import { useChat } from './context/ChatContext.jsx'
+import Sidebar from './components/Sidebar'
+import Chat from './components/Chat'
+
 function App() {
+  const { loading } = useChat()
   return (
-    <section>
-      <div className='flex flex-col h-screen justify-center'>
-        <div className='flex flex-col items-center justify-center p-4 rounded-md'>
-          <h1 className='text-2xl font-bold'>Welcome to the chat app</h1>
+    <section className='flex h-screen w-full relative'>
+      <Sidebar />
+      <Chat />
+      {loading && (
+        <div className='absolute inset-0 bg-black/70 flex items-center justify-center z-50'>
+          <div className='text-white text-lg'>Loading...</div>
         </div>
-        <div className='flex flex-col items-center justify-center p-4 rounded-md'>
-          <input type="text" placeholder='Enter your question' />
-          <button className='text-white p-2 rounded-md'><Search /></button>
-        </div>
-      </div>      
+      )}
     </section>
   )
 }
-
 export default App
