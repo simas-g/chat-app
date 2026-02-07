@@ -13,7 +13,7 @@ export default function Messages() {
   return (
     <div className='w-full flex flex-col flex-1 overflow-y-auto px-4 py-6'>
       {messages.length === 0 && !currentChat && (
-        <div className='flex flex-col items-center h-screen justify-center text-gray-400'>
+        <div className='flex flex-col text-center items-center h-screen justify-center text-gray-400'>
           <h1 className='text-2xl font-bold mb-2'>Welcome to the chat</h1>
           <p>Select a chat or start a new conversation</p>
           <div className='mt-4 w-full max-w-3xl'>

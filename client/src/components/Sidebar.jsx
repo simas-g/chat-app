@@ -32,9 +32,8 @@ const Header = ({ onClose, onNewChat }) => (
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true)
   const { setCurrentChat } = useChat()
-  const base = 'flex flex-col h-screen bg-black border-r border-gray-700'
-  const expandedWidth = 'w-64'
-  const width = isOpen ? `w-12 sm:${expandedWidth}` : 'w-12'
+  const base = 'bg-black border-r border-gray-700'
+  const width = isOpen ? `4rem w:64` : '4rem w-12'
 
   return (
     <>
@@ -42,7 +41,7 @@ export default function Sidebar() {
         onClick={() => setIsOpen(false)}
         className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 sm:hidden transition-opacity ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       />
-      <div className={`${base} ${width} transition-all duration-300`}>
+      <div className={`${base} flex flex-col h-screen ${width} transition-all duration-300`}>
         <div className='hidden sm:flex flex-1 overflow-hidden flex-col relative'>
           <button
             onClick={() => setIsOpen(true)}
@@ -60,8 +59,8 @@ export default function Sidebar() {
             <SidebarIcon className='text-white' size={20} />
           </button>
         </div>
-        <div className={`sm:hidden fixed left-0 top-0 h-full overflow-hidden bg-black border-r border-gray-700 z-50 flex transition-all duration-300 ${isOpen ? expandedWidth : 'w-0'}`}>
-          <div className={`min-w-64 w-64 flex flex-col flex-1 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`${base} sm:hidden fixed left-0 top-0 h-full overflow-hidden z-50 flex transition-all duration-300 ${isOpen ? "w-64" : 'w-0'}`}>
+          <div className={`flex flex-col flex-1 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
             <Header onClose={() => setIsOpen(false)} onNewChat={() => setCurrentChat(null)} />
             <div className='flex-1 overflow-y-auto'><ChatList /></div>
           </div>
